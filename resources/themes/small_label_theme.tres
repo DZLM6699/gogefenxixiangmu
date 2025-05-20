@@ -1,8 +1,0 @@
-[gd_resource type="Theme" load_steps=3 format=2]
-
-[ext_resource path="res://resources/fonts/actual/base/font_26.tres" type="DynamicFont" id=1]
-[ext_resource path="res://resources/fonts/actual/base/font_menus.tres" type="DynamicFont" id=2]
-
-[resource]
-default_font = ExtResource( 2 )
-Label/fonts/font = ExtResource( 1 )
