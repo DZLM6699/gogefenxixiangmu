@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/themes/panel/tooltip_style.tres" type="StyleBox" id=1]
+[ext_resource path="res://resources/fonts/actual/base/font_22.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/menus/global/tooltip.gd" type="Script" id=3]
+
+[node name="Tooltip" type="PanelContainer"]
+margin_right = 100.0
+margin_bottom = 44.0
+custom_styles/panel = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 90.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 2 )
+text = "Tooltip"

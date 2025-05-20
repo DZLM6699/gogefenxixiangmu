@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://items/all/acid/acid_icon.png" type="Texture" id=1]
+[ext_resource path="res://items/global/inventory_element.gd" type="Script" id=2]
+[ext_resource path="res://items/global/curse_border_light.png" type="Texture" id=3]
+[ext_resource path="res://ui/sounds/inventory_element_focus.wav" type="AudioStream" id=4]
+[ext_resource path="res://ui/sounds/water_drop_drip_single_09.wav" type="AudioStream" id=5]
+[ext_resource path="res://resources/fonts/actual/base/font_40_outline_thick.tres" type="DynamicFont" id=6]
+
+[node name="InventoryElement" type="Button"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+icon_align = 1
+expand_icon = true
+script = ExtResource( 2 )
+sound_on_focus = ExtResource( 4 )
+sound_on_pressed = ExtResource( 5 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+
+[node name="Curse" type="TextureRect" parent="MarginContainer"]
+unique_name_in_owner = true
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 92.0
+margin_bottom = 92.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -89.0
+margin_top = -45.0
+margin_right = -7.0
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 6 )
+align = 2
+valign = 2
+
+[connection signal="focus_entered" from="." to="." method="_on_InventoryElement_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_InventoryElement_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_InventoryElement_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_InventoryElement_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_InventoryElement_pressed"]

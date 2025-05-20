@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://effects/items/double_key_value_effect.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+key = "stat_elemental_damage"
+text_key = "EFFECT_GAIN_STAT_FOR_EQUIPPED_ITEM_WITH_STAT"
+value = 1
+custom_key = "gain_stat_for_equipped_item_with_stat"
+storage_method = 1
+effect_sign = 3
+custom_args = [  ]
+key2 = "stat_elemental_damage"
+value2 = 0

@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://tools/output/achievementLocalizations.locale.translation", "res://tools/output/achievementLocalizations.lockedTitle.translation", "res://tools/output/achievementLocalizations.lockedDescription.translation", "res://tools/output/achievementLocalizations.unlockedTitle.translation", "res://tools/output/achievementLocalizations.unlockedDescription.translation", "res://tools/output/achievementLocalizations.flavorText.translation", "res://tools/output/achievementLocalizations.lockedIcon.translation", "res://tools/output/achievementLocalizations.unlockedIcon.translation" ]
+
+source_file="res://tools/output/achievementLocalizations.csv"
+dest_files=[ "res://tools/output/achievementLocalizations.locale.translation", "res://tools/output/achievementLocalizations.lockedTitle.translation", "res://tools/output/achievementLocalizations.lockedDescription.translation", "res://tools/output/achievementLocalizations.unlockedTitle.translation", "res://tools/output/achievementLocalizations.unlockedDescription.translation", "res://tools/output/achievementLocalizations.flavorText.translation", "res://tools/output/achievementLocalizations.lockedIcon.translation", "res://tools/output/achievementLocalizations.unlockedIcon.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

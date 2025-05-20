@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=10 format=2]
+
+[ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
+[ext_resource path="res://items/all/ball_and_chain/appearances/ball_and_chain_app_1.tres" type="Resource" id=2]
+[ext_resource path="res://items/all/ball_and_chain/effects/ball_and_chain_effect_0.tres" type="Resource" id=3]
+[ext_resource path="res://items/all/ball_and_chain/ball_and_chain_icon.png" type="Texture" id=4]
+[ext_resource path="res://items/all/ball_and_chain/appearances/ball_and_chain_app_0.tres" type="Resource" id=5]
+[ext_resource path="res://items/all/ball_and_chain/effects/ball_and_chain_effect_2b.tres" type="Resource" id=6]
+[ext_resource path="res://items/all/ball_and_chain/effects/ball_and_chain_effect_3.tres" type="Resource" id=7]
+[ext_resource path="res://items/all/ball_and_chain/effects/ball_and_chain_effect_1.tres" type="Resource" id=8]
+[ext_resource path="res://items/all/ball_and_chain/effects/ball_and_chain_effect_2.tres" type="Resource" id=9]
+
+[resource]
+script = ExtResource( 1 )
+my_id = "item_ball_and_chain"
+unlocked_by_default = true
+icon = ExtResource( 4 )
+name = "ITEM_BALL_AND_CHAIN"
+tier = 2
+value = 75
+effects = [ ExtResource( 3 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 7 ) ]
+tracking_text = ""
+is_lockable = true
+is_cursed = false
+curse_factor = 0.0
+max_nb = 1
+item_appearances = [ ExtResource( 5 ), ExtResource( 2 ) ]
+tags = [ "stat_percent_damage", "stat_armor", "knockback" ]

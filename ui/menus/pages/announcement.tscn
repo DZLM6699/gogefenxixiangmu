@@ -1,0 +1,102 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/menus/pages/announcement.gd" type="Script" id=1]
+[ext_resource path="res://resources/themes/announcement_theme.tres" type="Theme" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+content_margin_right = 40.0
+
+[node name="Announcement" type="Control"]
+visible = false
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+
+[node name="AnnouncementContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AnnouncementContainer"]
+margin_right = 381.0
+margin_bottom = 99.0
+custom_constants/separation = 0
+
+[node name="FreeSpace" type="Control" parent="AnnouncementContainer/HBoxContainer"]
+margin_right = 45.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 45, 0 )
+
+[node name="SpeechBubblePanel" type="PanelContainer" parent="AnnouncementContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 45.0
+margin_right = 381.0
+margin_bottom = 99.0
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="AnnouncementContainer/HBoxContainer/SpeechBubblePanel"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 334.0
+margin_bottom = 74.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AnnouncementContainer/HBoxContainer/SpeechBubblePanel/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 322.0
+margin_bottom = 62.0
+
+[node name="Header" type="Label" parent="AnnouncementContainer/HBoxContainer/SpeechBubblePanel/MarginContainer/VBoxContainer"]
+margin_right = 312.0
+margin_bottom = 24.0
+custom_styles/normal = SubResource( 1 )
+text = "ANNOUNCEMENT_HEADER"
+align = 1
+
+[node name="Content" type="Label" parent="AnnouncementContainer/HBoxContainer/SpeechBubblePanel/MarginContainer/VBoxContainer"]
+margin_top = 28.0
+margin_right = 312.0
+margin_bottom = 52.0
+text = "ANNOUNCEMENT_CONTENT"
+align = 1
+autowrap = true
+
+[node name="AnnouncementButton" type="Button" parent="AnnouncementContainer/HBoxContainer/SpeechBubblePanel"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 334.0
+margin_bottom = 74.0
+focus_mode = 0
+mouse_filter = 1
+flat = true
+
+[node name="CloseButton" type="Button" parent="AnnouncementContainer/HBoxContainer/SpeechBubblePanel"]
+margin_left = 309.0
+margin_top = 2.0
+margin_right = 334.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 25, 20 )
+focus_mode = 0
+mouse_filter = 1
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Image" type="TextureRect" parent="AnnouncementContainer"]
+unique_name_in_owner = true
+margin_top = 103.0
+margin_right = 381.0
+margin_bottom = 103.0
+
+[node name="Tween" type="Tween" parent="."]
+unique_name_in_owner = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_Announcement_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Announcement_mouse_exited"]
+[connection signal="mouse_entered" from="AnnouncementContainer/HBoxContainer/SpeechBubblePanel" to="." method="_on_PanelContainer_mouse_entered"]
+[connection signal="mouse_exited" from="AnnouncementContainer/HBoxContainer/SpeechBubblePanel" to="." method="_on_PanelContainer_mouse_exited"]
+[connection signal="button_down" from="AnnouncementContainer/HBoxContainer/SpeechBubblePanel/AnnouncementButton" to="." method="_on_AnnouncementButton_button_down"]
+[connection signal="button_up" from="AnnouncementContainer/HBoxContainer/SpeechBubblePanel/AnnouncementButton" to="." method="_on_AnnouncementButton_button_up"]
+[connection signal="pressed" from="AnnouncementContainer/HBoxContainer/SpeechBubblePanel/AnnouncementButton" to="." method="_on_AnnouncementButton_pressed"]
+[connection signal="pressed" from="AnnouncementContainer/HBoxContainer/SpeechBubblePanel/CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="tween_started" from="Tween" to="." method="_on_Tween_tween_started"]

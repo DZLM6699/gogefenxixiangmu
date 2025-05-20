@@ -1,0 +1,14 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://zones/zone_1/zone_1_data.tres" type="Resource" id=3]
+[ext_resource path="res://singletons/zone_service.gd" type="Script" id=4]
+[ext_resource path="res://zones/common/endless/group_endless.tres" type="Resource" id=5]
+[ext_resource path="res://entities/units/enemies/lamprey/lamprey.tscn" type="PackedScene" id=15]
+[ext_resource path="res://zones/common/endless/unit_endless.tres" type="Resource" id=16]
+
+[node name="ZoneService" type="Node2D"]
+script = ExtResource( 4 )
+zones = [ ExtResource( 3 ) ]
+endless_groups = [ ExtResource( 5 ) ]
+endless_unit_groups = [ ExtResource( 16 ) ]
+extra_enemy_scenes = [ ExtResource( 15 ) ]

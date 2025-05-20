@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://effect_behaviors/enemies/percent_damage_taken_enemy_effect_behavior.tscn" type="PackedScene" id=1]
+[ext_resource path="res://items/global/effect_behavior_data.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+scene = ExtResource( 1 )

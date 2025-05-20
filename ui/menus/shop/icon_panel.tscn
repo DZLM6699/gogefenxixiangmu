@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://items/all/acid/acid_icon.png" type="Texture" id=1]
+[ext_resource path="res://resources/fonts/actual/base/font_40_outline_thick.tres" type="DynamicFont" id=2]
+[ext_resource path="res://resources/fonts/actual/base/font_26_outline.tres" type="DynamicFont" id=3]
+[ext_resource path="res://ui/menus/shop/icon_panel.gd" type="Script" id=4]
+[ext_resource path="res://ui/menus/shop/count_label.gd" type="Script" id=5]
+[ext_resource path="res://items/global/curse_border_light.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.784314, 0.784314, 0.784314, 0.313726 )
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="IconPanel" type="Panel"]
+rect_min_size = Vector2( 96, 96 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+
+[node name="Curse" type="TextureRect" parent="MarginContainer"]
+unique_name_in_owner = true
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 92.0
+margin_bottom = 92.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="CoopCount" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -38.0
+margin_top = -32.0
+margin_right = -8.0
+margin_bottom = -1.0
+grow_horizontal = 0
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 3 )
+align = 2
+valign = 2
+script = ExtResource( 5 )
+
+[node name="Count" type="Label" parent="."]
+unique_name_in_owner = true
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -88.0
+margin_top = -45.0
+margin_right = -6.0
+grow_horizontal = 0
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 2 )
+align = 2
+valign = 2
+script = ExtResource( 5 )

@@ -1,0 +1,38 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://singletons/coop_service.gd" type="Script" id=1]
+[ext_resource path="res://ui/menus/global/key_ps_triangle.png" type="Texture" id=2]
+[ext_resource path="res://ui/menus/global/key_xbox_y.png" type="Texture" id=3]
+[ext_resource path="res://ui/menus/global/key_e.png" type="Texture" id=4]
+[ext_resource path="res://ui/menus/global/key_rb.png" type="Texture" id=5]
+[ext_resource path="res://ui/menus/global/key_lb.png" type="Texture" id=6]
+[ext_resource path="res://ui/menus/global/key_switch_x.png" type="Texture" id=7]
+[ext_resource path="res://ui/menus/global/key_space.png" type="Texture" id=8]
+[ext_resource path="res://ui/menus/global/key_ps_cross.png" type="Texture" id=9]
+[ext_resource path="res://ui/menus/global/key_xbox_a.png" type="Texture" id=10]
+[ext_resource path="res://ui/menus/global/key_switch_b.png" type="Texture" id=11]
+[ext_resource path="res://ui/menus/global/key_switch_y.png" type="Texture" id=12]
+[ext_resource path="res://ui/menus/global/key_ps_square.png" type="Texture" id=13]
+[ext_resource path="res://ui/menus/global/key_f.png" type="Texture" id=14]
+[ext_resource path="res://ui/menus/global/key_xbox_x.png" type="Texture" id=15]
+
+[node name="CoopService" type="Node"]
+script = ExtResource( 1 )
+additional_enemies_per_coop_player = 0.3
+additional_enemy_health_per_coop_player = 0.3
+additional_enemy_damage_per_coop_player = 0.08
+keyboard_ui_accept_icon = ExtResource( 8 )
+gamepad_xbox_ui_accept_icon = ExtResource( 10 )
+gamepad_playstation_ui_accept_icon = ExtResource( 9 )
+gamepad_switch_ui_accept_icon = ExtResource( 11 )
+keyboard_ui_select_icon = ExtResource( 4 )
+gamepad_xbox_ui_select_icon = ExtResource( 15 )
+gamepad_playstation_ui_select_icon = ExtResource( 13 )
+gamepad_switch_ui_select_icon = ExtResource( 12 )
+keyboard_ui_info_icon = ExtResource( 14 )
+gamepad_xbox_ui_info_icon = ExtResource( 3 )
+gamepad_playstation_ui_info_icon = ExtResource( 2 )
+gamepad_switch_ui_info_icon = ExtResource( 7 )
+gamepad_ltrigger_icon = ExtResource( 6 )
+gamepad_rtrigger_icon = ExtResource( 5 )
+player_colors = [ Color( 0.7227, 0.99, 0.92763, 1 ), Color( 0.95, 0.7277, 0.608, 1 ), Color( 0.87451, 0.988235, 0.721569, 1 ), Color( 0.99, 0.94842, 0.6336, 1 ) ]

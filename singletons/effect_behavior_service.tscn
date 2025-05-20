@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://singletons/effect_behavior_service.gd" type="Script" id=1]
+[ext_resource path="res://effect_behaviors/enemies/percent_damage_taken_enemy_behavior_data.tres" type="Resource" id=2]
+
+[node name="EffectBehaviorService" type="Node"]
+script = ExtResource( 1 )
+enemy_effect_behaviors = [ ExtResource( 2 ) ]

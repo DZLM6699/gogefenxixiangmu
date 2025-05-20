@@ -1,0 +1,323 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://ui/menus/run/difficulty_selection/difficulty_selection.gd" type="Script" id=1]
+[ext_resource path="res://resources/fonts/actual/base/font_26.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/menus/global/my_menu_button.gd" type="Script" id=3]
+[ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=6]
+[ext_resource path="res://ui/menus/shop/shop_background.png" type="Texture" id=9]
+[ext_resource path="res://ui/menus/shop/inventory.tscn" type="PackedScene" id=10]
+[ext_resource path="res://items/global/random_icon.png" type="Texture" id=11]
+[ext_resource path="res://ui/menus/ingame/item_panel_ui.tscn" type="PackedScene" id=15]
+[ext_resource path="res://resources/fonts/actual/base/font_60_outline.tres" type="DynamicFont" id=19]
+[ext_resource path="res://ui/menus/global/focus_emulator.gd" type="Script" id=23]
+[ext_resource path="res://ui/menus/global/focus_emulator_base_data.gd" type="Script" id=24]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 24 )
+path = NodePath("../MarginContainer/VBoxContainer/ScrollContainer/Inventories/Inventory1")
+apply_player_color = true
+contain_horizontal_focus = false
+contain_horizontal_focus_exception_paths = [  ]
+contain_vertical_focus = false
+require_entry_from_control_paths = [  ]
+focus_neighbour_top_paths = [  ]
+focus_neighbour_bottom_paths = [  ]
+focus_neighbour_left_paths = [  ]
+focus_neighbour_right_paths = [  ]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 24 )
+path = NodePath("../BackButton")
+apply_player_color = true
+contain_horizontal_focus = false
+contain_horizontal_focus_exception_paths = [  ]
+contain_vertical_focus = false
+require_entry_from_control_paths = [  ]
+focus_neighbour_top_paths = [  ]
+focus_neighbour_bottom_paths = [  ]
+focus_neighbour_left_paths = [  ]
+focus_neighbour_right_paths = [  ]
+
+[node name="DifficultySelection" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 6 )
+script = ExtResource( 1 )
+random_icon = ExtResource( 11 )
+add_random_element = false
+enable_coop_panels = false
+
+[node name="FocusEmulator1" type="Node2D" parent="."]
+script = ExtResource( 23 )
+focus_base_data = [ SubResource( 1 ), SubResource( 2 ) ]
+player_index = 0
+
+[node name="Background" type="TextureRect" parent="."]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 25
+custom_constants/margin_top = 75
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 586.0
+margin_top = 75.0
+margin_right = 1334.0
+margin_bottom = 1055.0
+size_flags_horizontal = 4
+custom_constants/separation = 35
+alignment = 1
+
+[node name="TitleContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 748.0
+margin_bottom = 73.0
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/TitleContainer"]
+margin_left = 43.0
+margin_right = 705.0
+margin_bottom = 73.0
+custom_fonts/font = ExtResource( 19 )
+text = "DIFFICULTY_SELECTION"
+
+[node name="DescriptionContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 108.0
+margin_right = 748.0
+margin_bottom = 608.0
+rect_min_size = Vector2( 0, 500 )
+custom_constants/separation = 15
+alignment = 1
+
+[node name="CharacterPanel" parent="MarginContainer/VBoxContainer/DescriptionContainer" instance=ExtResource( 15 )]
+margin_left = 0.0
+margin_right = 359.0
+margin_bottom = 500.0
+
+[node name="MarginContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/CharacterPanel" index="0"]
+margin_bottom = 495.0
+
+[node name="VBoxContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/CharacterPanel/MarginContainer" index="0"]
+margin_bottom = 476.0
+
+[node name="ItemDescription" parent="MarginContainer/VBoxContainer/DescriptionContainer/CharacterPanel/MarginContainer/VBoxContainer" index="0"]
+margin_bottom = 462.0
+expand_indefinitely = false
+
+[node name="ScrollContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/CharacterPanel/MarginContainer/VBoxContainer/ItemDescription" index="2"]
+visible = true
+margin_top = 116.0
+margin_bottom = 462.0
+rect_min_size = Vector2( 0, 345 )
+
+[node name="VBoxContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/CharacterPanel/MarginContainer/VBoxContainer/ItemDescription/ScrollContainer" index="0"]
+margin_bottom = 346.0
+
+[node name="WeaponPanel" parent="MarginContainer/VBoxContainer/DescriptionContainer" instance=ExtResource( 15 )]
+margin_left = 374.0
+margin_right = 733.0
+margin_bottom = 500.0
+
+[node name="MarginContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/WeaponPanel" index="0"]
+margin_bottom = 495.0
+
+[node name="VBoxContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/WeaponPanel/MarginContainer" index="0"]
+margin_bottom = 476.0
+
+[node name="ItemDescription" parent="MarginContainer/VBoxContainer/DescriptionContainer/WeaponPanel/MarginContainer/VBoxContainer" index="0"]
+margin_bottom = 462.0
+expand_indefinitely = false
+
+[node name="ScrollContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/WeaponPanel/MarginContainer/VBoxContainer/ItemDescription" index="2"]
+rect_min_size = Vector2( 0, 345 )
+
+[node name="VBoxContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/WeaponPanel/MarginContainer/VBoxContainer/ItemDescription/ScrollContainer" index="0"]
+margin_bottom = 345.0
+
+[node name="Panels" type="HBoxContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer"]
+margin_left = 748.0
+margin_right = 748.0
+margin_bottom = 500.0
+custom_constants/separation = 15
+
+[node name="Panel1" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels" instance=ExtResource( 15 )]
+unique_name_in_owner = true
+visible = false
+margin_left = 0.0
+margin_right = 369.0
+margin_bottom = 509.0
+rect_min_size = Vector2( 0, 475 )
+
+[node name="MarginContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel1" index="0"]
+margin_bottom = 499.0
+
+[node name="VBoxContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel1/MarginContainer" index="0"]
+margin_bottom = 480.0
+
+[node name="ItemDescription" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel1/MarginContainer/VBoxContainer" index="0"]
+margin_bottom = 461.0
+expand_indefinitely = false
+
+[node name="Panel2" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels" instance=ExtResource( 15 )]
+unique_name_in_owner = true
+visible = false
+margin_left = 0.0
+margin_right = 369.0
+margin_bottom = 509.0
+rect_min_size = Vector2( 0, 475 )
+
+[node name="MarginContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel2" index="0"]
+margin_bottom = 499.0
+
+[node name="VBoxContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel2/MarginContainer" index="0"]
+margin_bottom = 480.0
+
+[node name="ItemDescription" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel2/MarginContainer/VBoxContainer" index="0"]
+margin_bottom = 461.0
+expand_indefinitely = false
+
+[node name="Panel3" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels" instance=ExtResource( 15 )]
+unique_name_in_owner = true
+visible = false
+margin_left = 0.0
+margin_right = 369.0
+margin_bottom = 509.0
+rect_min_size = Vector2( 0, 475 )
+
+[node name="MarginContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel3" index="0"]
+margin_bottom = 499.0
+
+[node name="VBoxContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel3/MarginContainer" index="0"]
+margin_bottom = 480.0
+
+[node name="ItemDescription" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel3/MarginContainer/VBoxContainer" index="0"]
+margin_bottom = 461.0
+expand_indefinitely = false
+
+[node name="Panel4" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels" instance=ExtResource( 15 )]
+unique_name_in_owner = true
+visible = false
+margin_left = 0.0
+margin_right = 369.0
+margin_bottom = 509.0
+rect_min_size = Vector2( 0, 475 )
+
+[node name="MarginContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel4" index="0"]
+margin_bottom = 499.0
+
+[node name="VBoxContainer" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel4/MarginContainer" index="0"]
+margin_bottom = 480.0
+
+[node name="ItemDescription" parent="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel4/MarginContainer/VBoxContainer" index="0"]
+margin_bottom = 461.0
+expand_indefinitely = false
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+margin_left = 364.0
+margin_top = 643.0
+margin_right = 384.0
+margin_bottom = 980.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="Inventories" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+margin_right = 20.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 0
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 0
+
+[node name="Inventory1" parent="MarginContainer/VBoxContainer/ScrollContainer/Inventories" instance=ExtResource( 10 )]
+unique_name_in_owner = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 0.0
+margin_right = 10.0
+margin_bottom = 0.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+columns = 15
+focus_neighbour_strategy = 0
+set_neighbour_left = true
+set_neighbour_right = true
+
+[node name="Inventory2" parent="MarginContainer/VBoxContainer/ScrollContainer/Inventories" instance=ExtResource( 10 )]
+unique_name_in_owner = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 0.0
+margin_right = 10.0
+margin_bottom = 0.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+columns = 15
+
+[node name="Inventory3" parent="MarginContainer/VBoxContainer/ScrollContainer/Inventories" instance=ExtResource( 10 )]
+unique_name_in_owner = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 0.0
+margin_right = 10.0
+margin_bottom = 0.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+columns = 15
+
+[node name="Inventory4" parent="MarginContainer/VBoxContainer/ScrollContainer/Inventories" instance=ExtResource( 10 )]
+unique_name_in_owner = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 0.0
+margin_right = 10.0
+margin_bottom = 0.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+columns = 15
+
+[node name="BackButton" type="Button" parent="."]
+unique_name_in_owner = true
+self_modulate = Color( 1, 1, 1, 0.862745 )
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 233.0
+margin_bottom = 99.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "MENU_BACK"
+script = ExtResource( 3 )
+
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+
+[editable path="MarginContainer/VBoxContainer/DescriptionContainer/CharacterPanel"]
+[editable path="MarginContainer/VBoxContainer/DescriptionContainer/CharacterPanel/MarginContainer/VBoxContainer/ItemDescription"]
+[editable path="MarginContainer/VBoxContainer/DescriptionContainer/WeaponPanel"]
+[editable path="MarginContainer/VBoxContainer/DescriptionContainer/WeaponPanel/MarginContainer/VBoxContainer/ItemDescription"]
+[editable path="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel1"]
+[editable path="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel1/MarginContainer/VBoxContainer/ItemDescription"]
+[editable path="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel2"]
+[editable path="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel3"]
+[editable path="MarginContainer/VBoxContainer/DescriptionContainer/Panels/Panel4"]

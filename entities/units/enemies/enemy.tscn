@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://entities/units/enemies/attack_behaviors/shoot.tres" type="Animation" id=1]
+[ext_resource path="res://overlap/hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/units/unit/stats.gd" type="Script" id=3]
+[ext_resource path="res://entities/units/enemies/attack_behaviors/attack_behavior.gd" type="Script" id=4]
+[ext_resource path="res://entities/units/enemies/enemy.gd" type="Script" id=5]
+[ext_resource path="res://entities/units/movement_behaviors/follow_player_movement_behavior.gd" type="Script" id=6]
+[ext_resource path="res://entities/units/enemies/baby_alien/baby_alien.png" type="Texture" id=7]
+[ext_resource path="res://entities/units/unit/unit.tscn" type="PackedScene" id=8]
+[ext_resource path="res://entities/units/enemies/attack_behaviors/shoot_charmed.tres" type="Animation" id=9]
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 3 )
+health = 3
+health_increase_each_wave = 2.0
+speed = 250
+speed_randomization = 50
+damage = 1
+damage_increase_each_wave = 0.6
+attack_cd = 30.0
+value = 1
+knockback_resistance = 0.0
+gold_spread = 0
+can_drop_consumables = true
+always_drop_consumables = false
+base_drop_chance = 0.01
+item_drop_chance = 0.01
+min_consumable_tier = 0
+max_consumable_tier = 0
+armor = 0
+armor_increase_each_wave = 0.0
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.0312
+
+[node name="Enemy" instance=ExtResource( 8 )]
+collision_layer = 4
+collision_mask = 132
+script = ExtResource( 5 )
+can_be_boosted = true
+stats = SubResource( 7 )
+enemy_id = ""
+is_loot = false
+can_be_cursed = true
+can_be_charmed = true
+to_be_removed_in_priority = false
+
+[node name="Sprite" parent="Animation" index="0"]
+texture = ExtResource( 7 )
+
+[node name="Collision" parent="." index="1"]
+position = Vector2( 0, -3 )
+shape = SubResource( 4 )
+
+[node name="Hurtbox" parent="." index="2"]
+position = Vector2( 0, -16 )
+collision_mask = 1032
+
+[node name="Collision" parent="Hurtbox" index="0"]
+position = Vector2( 0, 7 )
+shape = SubResource( 5 )
+
+[node name="Hitbox" parent="." index="3" instance=ExtResource( 2 )]
+collision_layer = 4
+
+[node name="Collision" parent="Hitbox" index="0"]
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="4"]
+anims/shoot = ExtResource( 1 )
+anims/shoot_charmed = ExtResource( 9 )
+
+[node name="MovementBehavior" type="Node2D" parent="." index="6"]
+script = ExtResource( 6 )
+
+[node name="AttackBehavior" type="Node2D" parent="." index="7"]
+script = ExtResource( 4 )
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]

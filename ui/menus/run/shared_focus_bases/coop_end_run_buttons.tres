@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://ui/menus/global/focus_emulator_base_data.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+path = NodePath("../MarginContainer/VBoxContainer/HBoxContainer3")
+apply_player_color = true
+contain_horizontal_focus = false
+contain_horizontal_focus_exception_paths = [  ]
+contain_vertical_focus = false
+require_entry_from_control_paths = [  ]
+focus_neighbour_top_paths = [  ]
+focus_neighbour_bottom_paths = [  ]
+focus_neighbour_left_paths = [  ]
+focus_neighbour_right_paths = [  ]

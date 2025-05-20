@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://overlap/hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://projectiles/rocket/explosion.png" type="Texture" id=2]
+[ext_resource path="res://projectiles/player_explosion.gd" type="Script" id=3]
+[ext_resource path="res://particles/sprites/particle_1.png" type="Texture" id=4]
+[ext_resource path="res://projectiles/flesh_explosion/bullet_impact_body_flesh_01.wav" type="AudioStream" id=5]
+[ext_resource path="res://projectiles/flesh_explosion/bullet_impact_body_flesh_02.wav" type="AudioStream" id=7]
+[ext_resource path="res://particles/explosion_smoke.tscn" type="PackedScene" id=9]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 147.34
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 2 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "explode"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), null ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "emit_smoke"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Hitbox")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "disable"
+} ]
+}
+
+[node name="PlayerExplosion" type="Node2D"]
+script = ExtResource( 3 )
+explosion_sounds = [ ExtResource( 5 ), ExtResource( 7 ) ]
+
+[node name="Sprite" type="Sprite" parent="."]
+unique_name_in_owner = true
+self_modulate = Color( 0.788235, 0.788235, 0.788235, 0.392157 )
+scale = Vector2( 1.36719, 1.36719 )
+texture = ExtResource( 2 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
+visible = false
+collision_layer = 8
+
+[node name="Collision" parent="Hitbox" index="0"]
+position = Vector2( 0, 3 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+anims/RESET = SubResource( 2 )
+anims/explode = SubResource( 3 )
+
+[node name="ExplosionSmoke" parent="." instance=ExtResource( 9 )]
+unique_name_in_owner = true
+amount = 10
+texture = ExtResource( 4 )
+color = Color( 0.607843, 0.266667, 0.266667, 1 )
+take_background_color = false
+
+[connection signal="hit_something" from="Hitbox" to="." method="_on_Hitbox_hit_something"]
+[connection signal="killed_something" from="Hitbox" to="." method="_on_Hitbox_killed_something"]
+
+[editable path="Hitbox"]

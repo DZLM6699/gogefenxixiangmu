@@ -1,0 +1,31 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://entities/structures/turret/turret.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/structures/turret/builder/builder_turret_1.png" type="Texture" id=2]
+[ext_resource path="res://entities/structures/turret/builder/builder_turret.gd" type="Script" id=3]
+[ext_resource path="res://entities/structures/turret/builder/builder_turret_2.png" type="Texture" id=4]
+[ext_resource path="res://entities/structures/turret/builder/builder_turret_3.png" type="Texture" id=5]
+[ext_resource path="res://entities/structures/turret/builder/builder_turret_4.png" type="Texture" id=6]
+[ext_resource path="res://resources/sounds/metal_small_movement_03.wav" type="AudioStream" id=7]
+
+[sub_resource type="CircleShape2D" id=1]
+resource_local_to_scene = true
+radius = 169.706
+
+[node name="BuilderTurret" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+to_be_removed_in_priority = false
+turret_sprites = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
+upgrade_sounds = [ ExtResource( 7 ) ]
+
+[node name="Sprite" parent="Animation" index="0"]
+texture = ExtResource( 2 )
+
+[node name="Muzzle" parent="Animation" index="1"]
+position = Vector2( 0, 2 )
+
+[node name="Collision" parent="." index="1"]
+visible = true
+
+[node name="CollisionShape2D" parent="Range" index="0"]
+shape = SubResource( 1 )

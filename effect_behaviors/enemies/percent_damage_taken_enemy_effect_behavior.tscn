@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://effect_behaviors/enemies/percent_damage_taken_enemy_effect_behavior.gd" type="Script" id=2]
+
+[node name="PercentDamageTakenEnemyEffectBehavior" type="Node2D"]
+script = ExtResource( 2 )

@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sci-fi_code_fail_08.wav-91ed5953d8d59c2b5cdad14f67f32127.sample"
+
+[deps]
+
+source_file="res://entities/units/enemies/pursuer/sci-fi_code_fail_08.wav"
+dest_files=[ "res://.import/sci-fi_code_fail_08.wav-91ed5953d8d59c2b5cdad14f67f32127.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

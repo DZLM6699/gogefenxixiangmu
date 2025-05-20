@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
+[ext_resource path="res://items/all/eyes_surgery/eye_surgery_appearance.tres" type="Resource" id=2]
+[ext_resource path="res://items/all/eyes_surgery/eye_surgery_icon.png" type="Texture" id=3]
+[ext_resource path="res://items/all/eyes_surgery/eye_surgery_effect_2.tres" type="Resource" id=4]
+[ext_resource path="res://items/all/eyes_surgery/eye_surgery_effect_1.tres" type="Resource" id=5]
+[ext_resource path="res://items/all/eyes_surgery/eye_surgery_effect_1b.tres" type="Resource" id=6]
+
+[resource]
+script = ExtResource( 1 )
+my_id = "item_eyes_surgery"
+unlocked_by_default = true
+icon = ExtResource( 3 )
+name = "ITEM_EYES_SURGERY"
+tier = 1
+value = 60
+effects = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ) ]
+tracking_text = ""
+is_lockable = true
+is_cursed = false
+curse_factor = 0.0
+max_nb = 2
+item_appearances = [ ExtResource( 2 ) ]
+tags = [ "stat_elemental_damage" ]

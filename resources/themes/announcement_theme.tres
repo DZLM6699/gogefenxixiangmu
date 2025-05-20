@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=7 format=2]
+
+[ext_resource path="res://resources/fonts/actual/base/font_22.tres" type="DynamicFont" id=1]
+[ext_resource path="res://resources/themes/panel/announcement_panel.tres" type="StyleBox" id=2]
+[ext_resource path="res://resources/themes/panel/announcement_panel_hover.tres" type="StyleBox" id=3]
+[ext_resource path="res://resources/themes/button_styles/announcement_button.tres" type="StyleBox" id=4]
+
+[sub_resource type="BitmapFont" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[resource]
+Button/fonts/font = SubResource( 6 )
+Button/styles/hover = ExtResource( 4 )
+Button/styles/normal = ExtResource( 4 )
+Button/styles/pressed = SubResource( 5 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = ExtResource( 1 )
+PanelContainer/styles/hover = ExtResource( 3 )
+PanelContainer/styles/panel = ExtResource( 2 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Adonai - Wubs of the Deep.mp3-65246a8fee815c7e98ec1f47eb1adeb4.mp3str"
+
+[deps]
+
+source_file="res://resources/music/streamer_mode/Adonai - Wubs of the Deep.mp3"
+dest_files=[ "res://.import/Adonai - Wubs of the Deep.mp3-65246a8fee815c7e98ec1f47eb1adeb4.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/menus/global/key_xbox_a.png" type="Texture" id=1]
+[ext_resource path="res://resources/fonts/actual/base/font_22.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/menus/shop/coop_shop_hint.gd" type="Script" id=3]
+[ext_resource path="res://resources/themes/actual_no_scrollbar_theme.tres" type="Theme" id=4]
+
+[node name="CoopShopHint" type="ScrollContainer"]
+size_flags_horizontal = 4
+theme = ExtResource( 4 )
+scroll_horizontal_enabled = false
+scroll_vertical_enabled = false
+script = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+margin_right = 152.0
+margin_bottom = 35.0
+
+[node name="Label1" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+margin_top = 5.0
+margin_right = 66.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 2 )
+text = "Press"
+align = 2
+valign = 1
+
+[node name="KeyIcon" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 70.0
+margin_right = 105.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 35, 35 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 109.0
+margin_top = 5.0
+margin_right = 152.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 2 )
+text = "to ..."
+valign = 1

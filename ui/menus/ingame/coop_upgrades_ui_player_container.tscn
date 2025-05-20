@@ -1,0 +1,461 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://ui/menus/global/carousel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/menus/upgrades/coop_upgrade_ui.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/fonts/actual/base/font_35_outline.tres" type="DynamicFont" id=3]
+[ext_resource path="res://ui/menus/ingame/coop_upgrades_ui_player_container.gd" type="Script" id=4]
+[ext_resource path="res://ui/menus/shop/button_with_icon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/menus/shop/reroll_button.gd" type="Script" id=6]
+[ext_resource path="res://resources/fonts/actual/base/font_26.tres" type="DynamicFont" id=7]
+[ext_resource path="res://resources/themes/small_label_theme.tres" type="Theme" id=8]
+[ext_resource path="res://ui/menus/shop/stats_container.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ui/menus/run/gold_label.gd" type="Script" id=10]
+[ext_resource path="res://ui/menus/run/gold_icon.gd" type="Script" id=11]
+[ext_resource path="res://items/materials/material_ui.png" type="Texture" id=12]
+[ext_resource path="res://ui/menus/global/big_checkmark.png" type="Texture" id=13]
+[ext_resource path="res://ui/menus/global/dim_screen.tscn" type="PackedScene" id=14]
+[ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=15]
+[ext_resource path="res://ui/menus/ingame/coop_player_label.tscn" type="PackedScene" id=16]
+[ext_resource path="res://ui/hud/ui_things_to_process_player_container.tscn" type="PackedScene" id=17]
+[ext_resource path="res://ui/menus/global/my_menu_button.gd" type="Script" id=18]
+[ext_resource path="res://ui/menus/shop/item_description.tscn" type="PackedScene" id=19]
+[ext_resource path="res://ui/menus/shop/coop_inventory_container.tscn" type="PackedScene" id=20]
+[ext_resource path="res://ui/menus/shop/player_gear_container.gd" type="Script" id=21]
+[ext_resource path="res://ui/menus/shop/coop_item_popup.tscn" type="PackedScene" id=22]
+[ext_resource path="res://ui/menus/shop/coop_shop_hint.tscn" type="PackedScene" id=23]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+
+[node name="CoopUpgradesUIPlayerContainer" type="PanelContainer"]
+self_modulate = Color( 1, 1, 1, 0.2 )
+margin_right = 339.0
+margin_bottom = 780.0
+rect_min_size = Vector2( 0, 780 )
+theme = ExtResource( 15 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="ButtonDelayTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 460.0
+margin_bottom = 780.0
+custom_constants/margin_right = 15
+custom_constants/margin_top = 24
+custom_constants/margin_left = 15
+custom_constants/margin_bottom = 15
+
+[node name="Control" type="Control" parent="MarginContainer"]
+margin_left = 15.0
+margin_top = 24.0
+margin_right = 445.0
+margin_bottom = 765.0
+
+[node name="GoldUI" type="HBoxContainer" parent="MarginContainer/Control"]
+margin_right = 355.0
+margin_bottom = 40.0
+size_flags_vertical = 4
+
+[node name="GoldIcon" type="TextureRect" parent="MarginContainer/Control/GoldUI"]
+unique_name_in_owner = true
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 12 )
+expand = true
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GoldLabel" type="Label" parent="MarginContainer/Control/GoldUI"]
+unique_name_in_owner = true
+margin_left = 44.0
+margin_right = 63.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+script = ExtResource( 10 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 15.0
+margin_top = 24.0
+margin_right = 445.0
+margin_bottom = 765.0
+custom_constants/separation = 20
+
+[node name="CoopPlayerLabel" parent="MarginContainer/VBoxContainer" instance=ExtResource( 16 )]
+margin_right = 430.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 3 )
+align = 1
+
+[node name="Carousel" parent="MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+unique_name_in_owner = true
+margin_top = 60.0
+margin_right = 430.0
+margin_bottom = 741.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" parent="MarginContainer/VBoxContainer/Carousel" index="0"]
+margin_right = 430.0
+margin_bottom = 50.0
+
+[node name="HBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer" index="0"]
+margin_right = 420.0
+margin_bottom = 40.0
+
+[node name="ArrowLeft" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer" index="0"]
+margin_left = 0.0
+margin_top = 5.0
+margin_right = 50.0
+margin_bottom = 35.0
+
+[node name="Headings" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer" index="1"]
+margin_left = 80.0
+margin_right = 330.0
+margin_bottom = 40.0
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer/Headings" index="0"]
+margin_right = 250.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 3 )
+text = "UPGRADES"
+align = 1
+autowrap = true
+
+[node name="InventoryLabel" type="Label" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer/Headings" index="1"]
+visible = false
+margin_right = 250.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 3 )
+text = "INVENTORY"
+align = 1
+autowrap = true
+
+[node name="PrimaryStatsLabel" type="Label" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer/Headings" index="2"]
+visible = false
+margin_right = 250.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 250, 0 )
+custom_fonts/font = ExtResource( 3 )
+text = "STATS"
+align = 1
+autowrap = true
+
+[node name="SecondaryStatsLabel" type="Label" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer/Headings" index="3"]
+visible = false
+margin_right = 250.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 250, 0 )
+custom_fonts/font = ExtResource( 3 )
+text = "STATS"
+align = 1
+autowrap = true
+
+[node name="ArrowRight" parent="MarginContainer/VBoxContainer/Carousel/MarginContainer/HBoxContainer" index="2"]
+margin_left = 360.0
+margin_top = 5.0
+margin_right = 410.0
+margin_bottom = 35.0
+
+[node name="Content" parent="MarginContainer/VBoxContainer/Carousel" index="1"]
+margin_top = 60.0
+margin_right = 430.0
+margin_bottom = 681.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Carousel/Content" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 35
+custom_constants/margin_left = 35
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer"]
+margin_left = 35.0
+margin_right = 452.0
+margin_bottom = 950.0
+custom_constants/separation = 20
+
+[node name="UpgradesContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_right = 417.0
+margin_bottom = 525.0
+size_flags_vertical = 3
+custom_constants/separation = 8
+alignment = 1
+
+[node name="UpgradeUI" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+margin_left = 46.0
+margin_right = 371.0
+margin_bottom = 100.0
+
+[node name="UpgradeUI2" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+margin_left = 46.0
+margin_top = 108.0
+margin_right = 371.0
+margin_bottom = 208.0
+
+[node name="UpgradeUI3" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+margin_left = 46.0
+margin_top = 216.0
+margin_right = 371.0
+margin_bottom = 316.0
+
+[node name="UpgradeUI4" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+margin_left = 46.0
+margin_top = 324.0
+margin_right = 371.0
+margin_bottom = 424.0
+
+[node name="EmptySpace" type="Control" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer"]
+margin_top = 432.0
+margin_right = 417.0
+margin_bottom = 452.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="RerollButton" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer" instance=ExtResource( 5 )]
+unique_name_in_owner = true
+margin_left = 193.0
+margin_top = 460.0
+margin_right = 223.0
+margin_bottom = 525.0
+size_flags_horizontal = 4
+script = ExtResource( 6 )
+
+[node name="Margin" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/RerollButton/HBoxContainer" index="0"]
+margin_bottom = 65.0
+
+[node name="Label" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/RerollButton/HBoxContainer" index="1"]
+margin_top = 17.0
+margin_right = 58.0
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 7 )
+
+[node name="GoldIcon" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/RerollButton/HBoxContainer" index="2"]
+margin_left = 62.0
+margin_right = 97.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 35, 0 )
+
+[node name="ItemsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 545.0
+margin_right = 417.0
+margin_bottom = 800.0
+size_flags_vertical = 3
+custom_constants/separation = 32
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer"]
+margin_right = 417.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 3 )
+text = "ITEM_FOUND"
+align = 1
+
+[node name="ItemPanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer"]
+unique_name_in_owner = true
+margin_left = 46.0
+margin_top = 72.0
+margin_right = 371.0
+margin_bottom = 172.0
+size_flags_horizontal = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/ItemPanelContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 320.0
+margin_bottom = 95.0
+custom_constants/margin_right = 15
+custom_constants/margin_top = 15
+custom_constants/margin_left = 15
+custom_constants/margin_bottom = 15
+
+[node name="ItemDescription" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/ItemPanelContainer/MarginContainer" instance=ExtResource( 19 )]
+unique_name_in_owner = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 300.0
+margin_bottom = 75.0
+custom_constants/separation = 15
+
+[node name="HBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/ItemPanelContainer/MarginContainer/ItemDescription" index="0"]
+margin_right = 285.0
+margin_bottom = 60.0
+
+[node name="IconPanel" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/ItemPanelContainer/MarginContainer/ItemDescription/HBoxContainer" index="0"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+
+[node name="ScrollContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/ItemPanelContainer/MarginContainer/ItemDescription/HBoxContainer" index="1"]
+margin_left = 75.0
+margin_right = 285.0
+margin_bottom = 60.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer"]
+margin_top = 204.0
+margin_right = 417.0
+margin_bottom = 255.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TakeButton" type="Button" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_right = 181.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 7 )
+text = "MENU_TAKE"
+script = ExtResource( 18 )
+
+[node name="DiscardButton" type="Button" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 191.0
+margin_right = 417.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 7 )
+text = "MENU_RECYCLE"
+script = ExtResource( 18 )
+
+[node name="UIThingsToProcessPlayerContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer" instance=ExtResource( 17 )]
+unique_name_in_owner = true
+margin_top = 820.0
+margin_right = 417.0
+margin_bottom = 950.0
+rect_min_size = Vector2( 0, 130 )
+vertical_alignment = 1
+
+[node name="PlayerGearContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Carousel/Content" index="1"]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 15
+script = ExtResource( 21 )
+
+[node name="WeaponsContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/PlayerGearContainer" instance=ExtResource( 20 )]
+margin_right = 449.0
+margin_bottom = 121.0
+set_neighbour_top = true
+set_neighbour_right = true
+set_neighbour_left = true
+reserve_column_count = 6
+reserve_row_count = 1
+
+[node name="ItemsContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/PlayerGearContainer" instance=ExtResource( 20 )]
+margin_top = 136.0
+margin_right = 449.0
+margin_bottom = 571.0
+size_flags_vertical = 3
+set_neighbour_bottom = true
+set_neighbour_right = true
+set_neighbour_left = true
+reserve_column_count = 6
+
+[node name="TogglePopupHint" parent="MarginContainer/VBoxContainer/Carousel/Content/PlayerGearContainer" instance=ExtResource( 23 )]
+unique_name_in_owner = true
+margin_left = 148.0
+margin_top = 586.0
+margin_right = 300.0
+margin_bottom = 621.0
+text = "COOP_POPUP_DISABLE_HINT"
+ui_action = "ui_info"
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Carousel/Content" index="2"]
+visible = false
+anchor_right = 1.0
+
+[node name="PrimaryStatsContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/CenterContainer" instance=ExtResource( 9 )]
+unique_name_in_owner = true
+margin_left = 15.0
+margin_top = 0.0
+margin_right = 415.0
+margin_bottom = 700.0
+rect_min_size = Vector2( 400, 700 )
+theme = ExtResource( 8 )
+show_buttons = false
+title = "PRIMARY"
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer/Carousel/Content" index="3"]
+visible = false
+anchor_right = 1.0
+
+[node name="SecondaryStatsContainer" parent="MarginContainer/VBoxContainer/Carousel/Content/CenterContainer2" instance=ExtResource( 9 )]
+unique_name_in_owner = true
+margin_left = 15.0
+margin_top = 0.0
+margin_right = 415.0
+margin_bottom = 700.0
+rect_min_size = Vector2( 400, 700 )
+theme = ExtResource( 8 )
+show_buttons = false
+focused_tab = 1
+title = "SECONDARY"
+
+[node name="Control" type="Control" parent="."]
+margin_right = 460.0
+margin_bottom = 780.0
+
+[node name="ItemPopup" parent="Control" instance=ExtResource( 22 )]
+unique_name_in_owner = true
+visible = false
+margin_right = 464.0
+margin_bottom = 637.0
+parent_node_path = NodePath("../../MarginContainer/VBoxContainer/Carousel")
+anchor_to_panel = false
+
+[node name="CheckmarkGroup" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 376.0
+margin_bottom = 773.0
+
+[node name="CheckmarkDimScreen" parent="CheckmarkGroup" instance=ExtResource( 14 )]
+color = Color( 0, 0, 0, 0.686275 )
+
+[node name="Checkmark" type="TextureRect" parent="CheckmarkGroup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 4
+
+[connection signal="timeout" from="ButtonDelayTimer" to="." method="_on_ButtonDelayTimer_timeout"]
+[connection signal="index_changed" from="MarginContainer/VBoxContainer/Carousel" to="." method="_on_Carousel_index_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/RerollButton" to="." method="_on_RerollButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/HBoxContainer/TakeButton" to="." method="_on_TakeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/HBoxContainer/DiscardButton" to="." method="_on_DiscardButton_pressed"]
+
+[editable path="MarginContainer/VBoxContainer/Carousel"]
+[editable path="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/UpgradesContainer/RerollButton"]
+[editable path="MarginContainer/VBoxContainer/Carousel/Content/MarginContainer/VBoxContainer/ItemsContainer/ItemPanelContainer/MarginContainer/ItemDescription"]

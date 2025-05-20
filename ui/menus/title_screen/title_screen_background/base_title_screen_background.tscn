@@ -1,0 +1,232 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://ui/menus/title_screen/title_screen_background/splash_art_mist_front.png" type="Texture" id=1]
+[ext_resource path="res://ui/menus/title_screen/title_screen_background/brotato_idle.tres" type="Animation" id=2]
+[ext_resource path="res://ui/menus/title_screen/title_screen_background/splash_art_bg.png" type="Texture" id=3]
+[ext_resource path="res://ui/menus/title_screen/title_screen_background/splash_art_post_processing.png" type="Texture" id=4]
+[ext_resource path="res://ui/menus/title_screen/title_screen_background/splash_art_brotato.png" type="Texture" id=5]
+[ext_resource path="res://ui/menus/title_screen/title_screen_background/splash_art_mist_back.png" type="Texture" id=6]
+[ext_resource path="res://ui/menus/title_screen/title_screen_background/splash_art_mist_mid.png" type="Texture" id=7]
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../BackgroundMistBack:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("../BackgroundMistBack:rect_position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -150, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("../BackgroundMistBack:rect_position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "mist_back"
+length = 6.0
+loop = true
+step = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../BackgroundMistBack:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1.27456, 1, 0.5 ),
+"update": 0,
+"values": [ Vector2( -150, 0 ), Vector2( 0, 0 ), Vector2( -150, 0 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("BackgroundBrotato:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -75, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("BackgroundBrotato:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BackgroundBrotato:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "mist_front"
+length = 6.0
+loop = true
+step = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1.23114, 1, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -150, 0 ), Vector2( 0, 0 ) ]
+}
+
+[node name="BaseTitleScreenBackground" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -95.0
+margin_top = -20.0
+margin_right = 1975.0
+margin_bottom = 1060.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BackgroundMistBack" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_right = 820040.0
+margin_bottom = 461360.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundMistBack"]
+root_node = NodePath("../../BackgroundMistFront")
+autoplay = "mist_back"
+anims/RESET = SubResource( 4 )
+anims/mist_back = SubResource( 5 )
+
+[node name="BackgroundMistMid" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -75.0
+margin_right = 1955.0
+margin_bottom = 1040.0
+size_flags_horizontal = 0
+texture = ExtResource( 7 )
+stretch_mode = 4
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BackgroundBrotato" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -75.0
+margin_right = 818195.0
+margin_bottom = 460280.0
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundBrotato"]
+root_node = NodePath("../..")
+autoplay = "brotato_idle"
+anims/RESET = SubResource( 1 )
+anims/brotato_idle = ExtResource( 2 )
+
+[node name="BackgroundMistFront" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 820190.0
+margin_bottom = 461360.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundMistFront"]
+autoplay = "mist_front"
+anims/RESET = SubResource( 2 )
+anims/mist_front = SubResource( 3 )
+
+[node name="BackgroundPostProcessing" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -75.0
+margin_right = 1955.0
+margin_bottom = 1040.0
+size_flags_horizontal = 0
+texture = ExtResource( 4 )
+stretch_mode = 4
+__meta__ = {
+"_edit_lock_": true
+}

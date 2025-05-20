@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://projectiles/player_projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://projectiles/spike/spike.png" type="Texture" id=2]
+[ext_resource path="res://projectiles/delayed_player_projectile.gd" type="Script" id=3]
+
+[node name="BulletSpike" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="Collision" parent="Hitbox" index="0"]
+position = Vector2( 24, 0 )
+
+[node name="VisibilityNotifier2D" parent="." index="2"]
+position = Vector2( 24, 0 )
+
+[editable path="Hitbox"]

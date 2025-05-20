@@ -1,0 +1,136 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/brotatools/brotatools_ui.gd" type="Script" id=1]
+[ext_resource path="res://items/all/baby_with_a_beard/baby_with_a_beard_icon.png" type="Texture" id=2]
+[ext_resource path="res://items/all/alien_tongue/alien_tongue_icon.png" type="Texture" id=3]
+
+[node name="BrotatoolsUI" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+script = ExtResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1900.0
+margin_bottom = 1060.0
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 534.0
+margin_bottom = 1040.0
+custom_constants/separation = 15
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer4"]
+margin_right = 534.0
+margin_bottom = 14.0
+text = "New content"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer4"]
+margin_top = 29.0
+margin_right = 534.0
+margin_bottom = 83.0
+size_flags_horizontal = 3
+custom_constants/separation = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_right = 300.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 300, 0 )
+custom_constants/separation = 10
+
+[node name="ContentTypeButton" type="OptionButton" parent="HBoxContainer/VBoxContainer4/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_right = 300.0
+margin_bottom = 20.0
+text = "character"
+items = [ "character", null, false, 0, null, "item", null, false, 1, null, "melee_weapon", null, false, 2, null, "ranged_weapon", null, false, 3, null, "set", null, false, 4, null ]
+selected = 0
+
+[node name="ContentName" type="LineEdit" parent="HBoxContainer/VBoxContainer4/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 30.0
+margin_right = 300.0
+margin_bottom = 54.0
+placeholder_text = "name (e.g. alien_eyes)"
+
+[node name="BasedOn" type="LineEdit" parent="HBoxContainer/VBoxContainer4/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_top = 64.0
+margin_right = 300.0
+margin_bottom = 88.0
+placeholder_text = "based_on (optional)"
+
+[node name="HSeparator" type="VSeparator" parent="HBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_left = 315.0
+margin_right = 319.0
+margin_bottom = 54.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_left = 334.0
+margin_right = 534.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="GenerateButton" type="Button" parent="HBoxContainer/VBoxContainer4/HBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+margin_right = 200.0
+margin_bottom = 20.0
+text = "Generate"
+icon = ExtResource( 2 )
+expand_icon = true
+
+[node name="LinkButton" type="Button" parent="HBoxContainer/VBoxContainer4/HBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+margin_top = 30.0
+margin_right = 200.0
+margin_bottom = 50.0
+text = "Link"
+icon = ExtResource( 3 )
+expand_icon = true
+
+[node name="Instructions" type="Label" parent="HBoxContainer/VBoxContainer4"]
+margin_top = 98.0
+margin_right = 534.0
+margin_bottom = 214.0
+text = "Click 'Generate' to create skeleton data for the selected content type. For characters and items, placeholder effects will also be created that can then be edited. For weapons, placeholder stats will be created.
+
+Click 'Link' to automatically assign resources to commonly set properties. For all content types, this includes the icon image. For characters and items it includes appearances and effects."
+autowrap = true
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+margin_left = 538.0
+margin_right = 976.0
+margin_bottom = 1040.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 980.0
+margin_right = 1880.0
+margin_bottom = 1040.0
+
+[node name="Console" type="TextEdit" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+margin_right = 900.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 900, 300 )
+readonly = true
+
+[node name="ClearConsoleButton" type="Button" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+margin_top = 304.0
+margin_right = 900.0
+margin_bottom = 324.0
+text = "Clear Console"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer4/HBoxContainer/VBoxContainer/ContentTypeButton" to="." method="_on_ContentTypeButton_item_selected"]

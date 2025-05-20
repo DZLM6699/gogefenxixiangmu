@@ -1,0 +1,124 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://projectiles/slash/slash_projectile_2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/units/enemies/attack_behaviors/spawning_attack_behavior.gd" type="Script" id=2]
+[ext_resource path="res://entities/units/enemies/mom/mom_stats.tres" type="Resource" id=3]
+[ext_resource path="res://entities/units/enemies/mom/mom.gd" type="Script" id=4]
+[ext_resource path="res://entities/units/enemies/boss/boss.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entities/units/enemies/attack_behaviors/enemy_charge_prep_animation.tres" type="Animation" id=6]
+[ext_resource path="res://entities/units/enemies/attack_behaviors/shooting_attack_behavior.gd" type="Script" id=7]
+[ext_resource path="res://entities/units/enemies/boss/boss_state.tscn" type="PackedScene" id=8]
+[ext_resource path="res://entities/units/movement_behaviors/stay_in_range_from_player_movement_behavior.gd" type="Script" id=9]
+[ext_resource path="res://entities/units/enemies/mom/mom.png" type="Texture" id=10]
+[ext_resource path="res://entities/units/enemies/fin_alien/fin_alien.tscn" type="PackedScene" id=11]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 64.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 56.0
+
+[node name="Boss" instance=ExtResource( 5 )]
+script = ExtResource( 4 )
+can_be_boosted = false
+stats = ExtResource( 3 )
+enemy_id = "mom"
+is_elite = true
+
+[node name="Sprite" parent="Animation" index="0"]
+position = Vector2( 0, -56 )
+texture = ExtResource( 10 )
+
+[node name="Collision" parent="." index="1"]
+position = Vector2( 0, -16 )
+shape = SubResource( 4 )
+
+[node name="Collision" parent="Hurtbox" index="0"]
+position = Vector2( 0, -24 )
+shape = SubResource( 3 )
+
+[node name="Collision" parent="Hitbox" index="0"]
+position = Vector2( 0, -32 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="4"]
+anims/shoot = ExtResource( 6 )
+
+[node name="SpawningShootingBehavior" type="Node2D" parent="." index="6"]
+unique_name_in_owner = true
+script = ExtResource( 7 )
+projectile_scene = ExtResource( 1 )
+projectile_speed = 0
+max_range = 2000
+random_direction = true
+spawn_projectiles_on_target = true
+projectile_spawn_spread = 75
+delete_projectile_on_death = true
+
+[node name="AttackBehavior" parent="." index="8"]
+script = ExtResource( 7 )
+projectile_scene = ExtResource( 1 )
+projectile_speed = 650
+projectile_speed_randomization = 0
+speed_change_after_each_projectile = 0
+cooldown = 60.0
+initial_cooldown = 120
+max_cd_randomization = 10
+long_cooldown_every_x_shoots = 0
+long_cooldown = 0
+damage = 1
+damage_increase_each_wave = 1.15
+min_range = 0
+max_range = 1000
+attack_anim_speed = 1.0
+base_direction_randomization = 0.0
+base_direction_constant_spread = false
+alternate_between_base_direction_spread = false
+random_direction = false
+number_projectiles = 4
+projectile_spread = 0.9
+spawn_projectiles_on_target = false
+projectile_spawn_spread = 0
+projectile_spawn_only_on_borders = false
+specific_degrees_spawns = [  ]
+constant_spread = false
+constant_spread_rand_base_pos = 0.0
+atleast_one_projectile_on_target = false
+shoot_towards_unit = false
+shoot_in_unit_direction = false
+shoot_away_from_unit = false
+shoot_from_proj_pos_towards_player = false
+rotate_projectile = true
+delete_projectile_on_death = true
+
+[node name="State1" parent="States" index="0" instance=ExtResource( 8 )]
+hp_start = 0.6
+timer_start = 25.0
+
+[node name="MovementBehavior" parent="States/State1" index="0"]
+script = ExtResource( 9 )
+target_range = 500
+target_range_randomization = 0
+
+[node name="AttackBehavior" parent="States/State1" index="1"]
+script = ExtResource( 2 )
+enemy_to_spawn = ExtResource( 11 )
+cooldown = 20.0
+max_cd_randomization = 0
+nb_to_spawn = 5
+spawn_at_random_pos = false
+spawn_in_radius_around_unit = 800
+max_nb_of_spawns = -1
+
+[node name="LifeBar" parent="." index="13"]
+margin_top = -192.0
+margin_bottom = -176.0
+
+[connection signal="wanted_to_spawn_an_enemy" from="States/State1/AttackBehavior" to="." method="_on_AttackBehavior_wanted_to_spawn_an_enemy"]
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]
+[editable path="States/State1"]

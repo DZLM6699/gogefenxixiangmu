@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://items/global/item_data.gd" type="Script" id=1]
+[ext_resource path="res://items/all/reinforced_steel/reinforced_steel_icon.png" type="Texture" id=2]
+[ext_resource path="res://items/all/reinforced_steel/effects/reinforced_steel_effect_0.tres" type="Resource" id=3]
+[ext_resource path="res://items/all/reinforced_steel/effects/reinforced_steel_effect_1.tres" type="Resource" id=4]
+[ext_resource path="res://items/all/reinforced_steel/effects/reinforced_steel_effect_2.tres" type="Resource" id=5]
+
+[resource]
+script = ExtResource( 1 )
+my_id = "item_reinforced_steel"
+unlocked_by_default = true
+icon = ExtResource( 2 )
+name = "ITEM_REINFORCED_STEEL"
+tier = 1
+value = 50
+effects = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ]
+tracking_text = ""
+is_lockable = true
+is_cursed = false
+curse_factor = 0.0
+max_nb = -1
+item_appearances = [  ]
+tags = [ "stat_ranged_damage", "stat_engineering" ]

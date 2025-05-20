@@ -1,0 +1,68 @@
+GDRE Tools v0.9.0-rc.2
+Windows 10.0.19045, Intel(R) UHD Graphics 750, opengl3
+Opening file: D:/SteamLibrary/steamapps/common/Brotato/Brotato.pck
+Verified 5995 files, 29 files skipped (MD5 hash entry was empty)
+Extracted 6024 files, no errors detected!
+Script version 3.5.0-stable (rev 0xa7aad78) detected
+Recreating plugin configs...
+WARNING: Failed to recreate plugin.cfg for JSON_Schema_Validator
+   at: ImportExporter::recreate_plugin_configs (modules\gdsdecomp\utility\import_exporter.cpp:631)
+WARNING: Failed to recreate plugin.cfg for mod_loader
+   at: ImportExporter::recreate_plugin_configs (modules\gdsdecomp\utility\import_exporter.cpp:631)
+Exporting resources in parallel...
+Loading resource strings, this may take a while!!
+Resource strings loaded!
+Saved project config project.godot.
+
+
+********************************EXPORT REPORT********************************
+
+Totals:                                 
+Decompiled scripts:                     358
+Failed scripts:                         0
+Imported resources for export session:  1144
+Successfully converted:                 1144
+Lossy:                                  0
+Rewrote metadata:                       0
+Non-importable conversions:             0
+Not converted:                          0
+Failed conversions:                     0
+-------------
+
+------
+
+The following plugins failed to have their plugin.cfg regenerated:
+JSON_Schema_Validator
+mod_loader
+
+
+
+---------------------------------IMPORTANT NOTES----------------------------------
+
+
+Translation Export Incomplete:
+WARNING: Could not recover 193 keys for res://resources/translations/translations.csv
+Saved translations.csv to res://.assets/resources/translations/translations.csv
+
+
+------
+Incomplete Plugin Export:
+The following addons failed to have their plugin.cfg regenerated
+You may encounter editor errors due to this.
+Tip: Try finding the plugin in the Godot Asset Library or Github.
+
+ - JSON_Schema_Validator
+ - mod_loader
+
+
+
+------------------------------------------------------------------------------------
+
+Use Godot editor version 3.6.0 (steam version) to edit the project.
+GodotSteam can be found here: https://github.com/CoaguCo-Industries/GodotSteam/releases 
+Note: the project may be using a custom version of Godot. Detection for this has not been implemented yet.
+If you find that you have many non-import errors upon opening the project 
+(i.e. scripts or shaders have many errors), use the original game's binary as the export template.
+
+*******************************************************************************
+

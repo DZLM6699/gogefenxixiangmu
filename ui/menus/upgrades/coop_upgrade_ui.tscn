@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/menus/shop/item_description.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/menus/upgrades/upgrade_ui.gd" type="Script" id=3]
+[ext_resource path="res://ui/menus/global/my_menu_button.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+bg_color = Color( 0, 0, 0, 0.901961 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 15.0
+content_margin_right = 15.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 1, 1, 1, 0.196078 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[node name="CoopUpgradeUI" type="PanelContainer"]
+margin_right = 290.0
+margin_bottom = 160.0
+size_flags_horizontal = 4
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 325.0
+margin_bottom = 160.0
+rect_clip_content = true
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="UpgradeDescription" parent="MarginContainer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 305.0
+margin_bottom = 140.0
+
+[node name="HBoxContainer" parent="MarginContainer/UpgradeDescription" index="0"]
+margin_right = 285.0
+margin_bottom = 60.0
+
+[node name="IconPanel" parent="MarginContainer/UpgradeDescription/HBoxContainer" index="0"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+
+[node name="ScrollContainer" parent="MarginContainer/UpgradeDescription/HBoxContainer" index="1"]
+margin_left = 75.0
+margin_right = 285.0
+margin_bottom = 60.0
+
+[node name="ChooseButton" type="Button" parent="."]
+unique_name_in_owner = true
+margin_right = 325.0
+margin_bottom = 160.0
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+script = ExtResource( 4 )
+
+[connection signal="pressed" from="ChooseButton" to="." method="_on_ChooseButton_pressed"]
+
+[editable path="MarginContainer/UpgradeDescription"]
